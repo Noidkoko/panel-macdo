@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Utilisateur</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="section"  id="home">
+            <div class="container-page1">
+                <div class="top-container">
+                    <div class="display-name">
+                        <button v-on:click="mode()">3D mode</button>
+                        <p class="name">Login : <input type="text" v-model="user"/></p> 
+                        <p v-if="user.length > 0" class="name">Vous êtes connecté en tant que <span class="user-tag">{{ user }}</span></p>
+                    </div>
+                </div>
+                <div v-if="user.length > 0">
+                    <h2>
+                        <span>N</span>
+                        <span>o</span>
+                        <span>s</span>
+                        <span class="spc"> </span>
+                        <span>p</span>
+                        <span>r</span>
+                        <span>o</span>
+                        <span>d</span>
+                        <span>u</span>
+                        <span>i</span>
+                        <span>t</span>
+                        <span>s</span>
+                        <span class="spc"> </span>
+                        <span>d</span>
+                        <span>i</span>
+                        <span>s</span>
+                        <span>p</span>
+                        <span>o</span>
+                        <span>n</span>
+                        <span>i</span>
+                        <span>b</span>
+                        <span>l</span>
+                        <span>e</span>
+                        <span>s</span>
+                    </h2>
+                    <div class="display-products">
+                        <fiche-produit v-for="produit in produits" v-bind:nom="produit" v-on:commande-passee="commander"></fiche-produit>
+                    </div>
+    
+                <div style="display:flex;align-items: center; justify-content:center; margin: auto; height: 60px;" v-if="commandes.length > 0">
+                    <div>
+                        <div class="total-price">
+                            <p class="price">{{ total }}€</p>
+                        </div>
+                    </div>
+                    <h2>Votre commande</h2><button v-on:click="supprimer(produit)">Supprimer</button>
+                </div>
+    
+                <div  v-if="commandes.length > 0"  class="display-cart">
+                    <ul>
+                        <li v-for="commande in commandes">{{ commande }}</li>
+                    </ul>
+                    <button class="pay"><a href="#paiement">Valider ma commande</a></button>
+                </div>
+    
+            </div>
+            <img class="logo-interne" src="logo.png">
+        </div>
+        </div>
+        <div class="section"  id="paiement">
+            
+            <div class="container-page2">
+                <button class="pay"><a href="#home">Je ne suis pas sur de ma commande</a></button>
+                <h2>Votre total : {{ total }} €</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <input class="bank-cvv" placeholder="CVV">
+                        <img class="chip" src="chip.png"/>
+                        <img class="contactless" src="wifi-signal.png"/>
+                        <input type="text" size="20" maxlength="16" class="card-number" placeholder="0000 0000 0000 0000">
+                        <img class="visa"src="visa.png"/>
+                        <div class="arrow"></div><input class="card-name" placeholder="M John Doe">
+                        <input class="card-expire" placeholder="Expire 05/23">
+                    </div>
+                  </div>
+            <img class="logo-interne" src="logo.png">
+            <button class="validate"><a href="#validate">Payer ma commande</a></button>
+            </div>
+        </div>
+        <div class="section">
+            <div id="validate" class="container-page3">
+                <h2>Un employé prépare votre commande !</h2>
+                <img style="z-index:999;" src="https://images.squarespace-cdn.com/content/v1/5a73608aa8b2b0fd3c3f1fd1/1552914164950-BULOA7QR2IYUI93U98PN/f4952200-2064-45d6-b2bd-bfe320acae63.gif?format=500w">
+            <img class="logo-interne" src="logo.png">
+        </div>
+    </div>
+    </div>
+    <script>
+        Vue.component('fiche-produit', {
+            template:`
+            <div class="items"> 
+                {{ nom }}
+                <button v-on:click="passer_commande(nom)">Commander</button>
+            </div>`
+            ,
+            props: ["nom"],
+            methods: {
+                passer_commande: function(produit) {
+                    this.$emit('commande-passee', produit)
+                }
+            }   
+            })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                user: "",
+                produits: ["McNuggets", "CheeseBurger", "BigMac", "Frites"],
+                commandes: [],
+                total: 0,
+                prix: [4, 3, 7, 2]
+            },
+            methods: {
+                commander: function(produit) {
+                    if (this.commandes.length < 88){
+                        this.commandes.push(produit)
+                        this.total += this.prix[this.produits.indexOf(produit)]
+                    }
+                    else {
+                        return 0
+                    }
+                },
+                supprimer: function(produit) {
+                    this.total -= this.prix[this.produits.indexOf(this.commandes[this.commandes.length-1])]
+                    this.commandes.pop()
+                },
+                mode: function() {
+                    let section2 = document.querySelector('.container-page2')
+                    document.body.classList.toggle('mode')
+                    section2.classList.toggle('top')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

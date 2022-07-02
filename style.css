@@ -1,0 +1,307 @@
+* {
+    transition: .7s ease;
+    scroll-behavior: smooth;
+}
+fiche-produit {
+    transition: .7s ease;
+}
+
+body {
+    background-color: #1C542D;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.mode {
+    transform: perspective(150px) rotate3d(1,1,1,1deg);
+}
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+a {
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+.container-page1, .container-page2, .container-page3 {
+    width: 800px;
+    height: 700px;
+    min-height: 600px;
+    border-radius: 30px;
+    background-color:rgb(247, 247, 238);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .7s ease;
+    position: relative;
+    overflow: hidden;
+}
+.logo-interne {
+    position: absolute;
+    transform: rotate(24deg) translate(-240px, 340px);
+    opacity: 20%;
+}
+.top {
+    margin-top: 20vh;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.display-name {
+    display: flex;
+    flex-direction: column;
+}
+.name {
+    text-align: center;
+    letter-spacing: 1px;
+}
+.name:nth-child(1) {
+    padding-top: 0px;
+}
+.user-tag {
+    font-weight: bold;
+}
+
+.display-products {
+    display: flex;
+    justify-content: space-around;
+    max-width: 500px;
+    margin: auto;
+    z-index: 999;
+    
+}
+.items {
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 999;
+
+}
+.display-cart {
+    display: flex;
+    z-index: 999;
+    overflow: scroll;
+    max-height: 210px;
+}
+.pay {
+    position: sticky;
+    top: 0;
+    height: 100px;
+}
+.validate {
+    height: 130px;
+    width: 60%;
+    z-index: 999;
+}
+ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    max-height: 50px;
+    margin: 10px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #1c542da9;
+    border: 3px rgb(255, 255, 255) solid inset;
+    z-index: 999;
+    color: white;
+    font-weight: bold;
+
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: scroll;
+    background-color: white;
+    z-index: 999;
+    border-radius: 20px;
+}
+
+.container-page1 h2 {
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+.container-page1 h2 span {
+    margin: -3px;
+    transition: .08s ease-in;
+    display: inline-block;
+}
+.container-page1 h2 span:hover {
+    color: #86165769;
+    letter-spacing: 6px;
+    transition: .08s ease-in
+}
+.spc {
+    margin: 8px!important;
+}
+.price {
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bold;
+}
+button {
+    background-color: #1c542da9;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    transition: .2s;
+    color: white;
+    font-weight: bold;
+}
+button:hover {
+    transform: scale(1.04);
+    transition: .2s;
+}
+.card-container {
+    background: #34495e;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1); 
+    border-bottom: 6px solid #2c3e50;
+    border-right: 6px solid #2c3e50;
+    z-index: 999;
+  }
+  
+  .card {
+    position: relative;
+    padding-top: 60%;
+    overflow: hidden;
+  }
+  .chip {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    height: 23%;
+  }
+  
+  .contactless {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    height: 15%;
+    transform: rotate(90deg);
+  }
+  
+  .visa {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    height: 25%;
+  }
+  .card-number {
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    font-size: 2.5rem;
+    font-family: sans-serif;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    background-color: transparent;
+    border: none;
+  }
+  .arrow {
+    position: absolute;
+    top: 80%;
+    left: 5%;
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent; 
+    border-right:17px solid white; 
+  }
+  .card-name, .card-expire {
+    position: absolute;
+    left: 10%;
+    font-family: sans-serif;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 3px black;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .card-name {
+    top: 80%;
+    font-size: 1.3rem;
+  }
+  
+  .card-expire {
+    top: 86%;
+    font-size: 1rem;
+  }
+  .bank-cvv {
+    margin: 0;
+    display: inline-block;
+    padding: 10px 20px;
+    padding-left: 5%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    min-width: 30%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: inset 0px;
+  }
+  
+.card::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    width: 50%;
+    height: 5%;
+    left: 0;
+    top: 26%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    opacity: 0.5;
+  }
+  
+  .card::after {
+    content: "";
+    position: absolute;
+    display: block;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    right: -75px;
+    top:-75px;
+    border-radius: 50%;
+    opacity: 0.05;
+  }
